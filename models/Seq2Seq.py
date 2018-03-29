@@ -51,6 +51,8 @@ class Seq2Seq():
         elif flag == "make":
             self.sequence_autoencoder = self.nn.load_models()
             self.__make_decode_net()
+        elif flag == "resume":
+            self.sequence_autoencoder = self.nn.load_models()
         else:
             print("invalid flag!!")
             exit(0)
