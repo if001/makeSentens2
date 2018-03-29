@@ -23,7 +23,6 @@ def get_file_list(path):
 
 
 def main():
-    # lines = fopen("./files/files_all_rnp.txt")
     wakachi = WakachiMethod(Wakachi)
     file_list = get_file_list(WORK_DIR)
     for f in file_list:
@@ -31,9 +30,8 @@ def main():
         write_file = open(WORK_DIR + "stop_" + f, "a")
         with open(WORK_DIR + f) as read_file:
             for line in read_file.readlines():
-                if line != "BOS  。":
-                    d = wakachi.get_default_word_remove_stopword(line)
-                    write_file.write(" ".join(d + ["\n"]))
+                d = wakachi.get_default_word_remove_stopword(line)
+                write_file.write(" ".join(d + ["\n"]))
         write_file.close()
 
 

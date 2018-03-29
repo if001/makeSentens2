@@ -28,71 +28,76 @@ class File():
     def checkline(self, line):
         flag = 0
         # 半角
-        if (("-" in line) == True):
+        if ("-" in line):
             flag += 1
-
-        # if (("[" in line ) == True): flag += 1
-        # if (("]" in line ) == True): flag += 1
-        # if (("(" in line ) == True): flag += 1
-        # if ((")" in line ) == True): flag += 1
+        if (' \n \n' == line):
+            flag += 1
+        # if (("[" in line ): flag += 1
+        # if (("]" in line ): flag += 1
+        # if (("(" in line ): flag += 1
+        # if ((")" in line ): flag += 1
 
         # 全角
-        if ((" 〕" in line) == True):
+        if (" 〕" in line):
             flag += 1
-        if ((" 〔" in line) == True):
+        if (" 〔" in line):
             flag += 1
-        if (("【" in line) == True):
+        if ("【" in line):
             flag += 1
-        if (("】" in line) == True):
+        if ("】" in line):
             flag += 1
-        if (("［" in line) == True):
+        if ("［" in line):
             flag += 1
-        if (("］" in line) == True):
+        if ("］" in line):
             flag += 1
-        # if (("》" in line ) == True): flag += 1
-        # if (("《" in line ) == True): flag += 1
-        # if (("（" in line ) == True): flag += 1
-        # if (("）" in line ) == True): flag += 1
-        if (("｜" in line) == True):
+        # if (("》" in line ): flag += 1
+        # if (("《" in line ): flag += 1
+        # if (("（" in line ): flag += 1
+        # if (("）" in line ): flag += 1
+        # if ("｜" in line):
+        #     flag += 1
+        if ("ルビ" in line):
             flag += 1
-        if (("ルビ" in line) == True):
+        if ("（例）" in line):
             flag += 1
-        if (("（例）" in line) == True):
+        if ("（ 例 ）" in line):
             flag += 1
-        if (("（ 例 ）" in line) == True):
+        if ("［ ＃］" in line):
             flag += 1
-        if (("［ ＃］" in line) == True):
-            flag += 1
-        if ("底本" in line) == True:
+        if ("底本" in line):
             flag += 1
         # 改行のみも除く
-        if (("   \n" == line) == True):
+        if ("   \n" == line):
             flag += 1
-        if (("  \n" == line) == True):
+        if ("  \n" == line):
             flag += 1
-        if ((" \n" == line) == True):
+        if (" \n" == line):
             flag += 1
-        if (("\n" == line) == True):
+        if ("\n" == line):
             flag += 1
-        if ((" 。 " == line) == True):
+        if ("。" == line):
+            flag += 1
+        if (" 。" == line):
+            flag += 1
+        if ("　。" == line):
             flag += 1
 
         # その他
-        if (("※" in line) == True):
+        if ("※" in line):
             flag += 1
-        if ((" ＊ " in line) == True):
+        if (" ＊ " in line):
             flag += 1
-        if (("＊" in line) == True):
+        if ("＊" in line):
             flag += 1
-        if (("http:" in line) == True):
+        if ("http:" in line):
             flag += 1
-        if (("青空文庫" in line) == True):
+        if ("青空文庫" in line):
             flag += 1
-        if (("入力 、 校正 、 制作" in line)):
+        if ("入力 、 校正 、 制作" in line):
             flag += 1
-        if (("入力 ：" in line)):
+        if ("入力 ：" in line):
             flag += 1
-        if (("校正 ：" in line)):
+        if ("校正 ：" in line):
             flag += 1
         if (("公開" in line) and ("年" in line) and ("月" in line)):
             flag += 1
@@ -113,6 +118,8 @@ class File():
         return line
 
     def del_word(self, line):
+        line = re.sub(r'｜', "", line)
+        line = re.sub(r'|', "", line)
         line = re.sub(r'\n', "", line)
         line = re.sub(r'「', "", line)
         line = re.sub(r'」', "", line)
@@ -159,8 +166,7 @@ class File():
 
 def test():
     myfile = File()
-    fname = "re_oshieto_tabisuru_otoko.txt"
-    fname = "re_utf8_denjin_emu.txt"
+    fname = "mecab_utf8_yurei.txt"
     myfile.readfile(fname)
     myfile.writefile("tmp.txt")
 
