@@ -31,10 +31,9 @@ def main():
         write_file = open(WORK_DIR + "stop_" + f, "a")
         with open(WORK_DIR + f) as read_file:
             for line in read_file.readlines():
-                if len(line) > 2:
+                if line != "BOS  。":
                     d = wakachi.get_default_word_remove_stopword(line)
                     write_file.write(" ".join(d + ["\n"]))
-
         write_file.close()
 
 
