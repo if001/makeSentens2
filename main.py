@@ -16,13 +16,14 @@ def get_word_lists(file_path):
 
 def main():
     # train data作成
-    word_list = get_word_lists("./aozora_text/files/files_all_tmp.txt")
+    word_list = get_word_lists("./aozora_text/files/files_all_rnp.txt")
     stop_word_list = get_word_lists(
-        "./aozora_text/files/stop_files_all_tmp.txt")
+        "./aozora_text/files/stop_files_all_rnp.txt")
+
     ds = DataShaping()
     seq2seq = Seq2Seq("train")
 
-    for i in range(10):
+    for i in range(len(word_list)):
         train = ds.make_data_train(stop_word_list, i)
         teach, target = ds.make_data_teach_target(word_list, i)
         seq2seq.train(train, teach, target)
