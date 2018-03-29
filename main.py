@@ -1,5 +1,6 @@
 from models.Seq2Seq import Seq2Seq
 from lib.DataShaping import DataShaping
+import sys
 
 
 def get_word_lists(file_path):
@@ -19,9 +20,12 @@ def main():
     word_list = get_word_lists("./aozora_text/files/files_all_rnp.txt")
     stop_word_list = get_word_lists(
         "./aozora_text/files/stop_files_all_rnp.txt")
-
     ds = DataShaping()
-    seq2seq = Seq2Seq("train")
+
+    if sys.argv[:-1] == "resume":
+        seq2seq = Seq2Seq("resume")
+    else:
+        seq2seq = Seq2Seq("train")
 
     for i in range(len(word_list)):
         train = ds.make_data_train(stop_word_list, i)
