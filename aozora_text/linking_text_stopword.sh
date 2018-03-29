@@ -11,8 +11,7 @@ error(){
 
 fname=$1
 
-
-files=`ls | grep stop_reshape_mecab_utf8_.*.txt`
+files=`ls | grep ^stop_reshape_mecab_utf8_.*.txt`
 cat $files > stop_files_all_${fname}.txt
 mv stop_files_all_${fname}.txt ./files
 exit 0

@@ -70,7 +70,7 @@ fi
 
 ./linking_text_stopword.sh $savefile
 if [ $? -ne 0 ]; then
-    echo "./linking_text.sh error"
+    echo "./linking_text_stopword.sh error"
     exit 1
 fi
 

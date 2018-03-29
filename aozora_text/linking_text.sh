@@ -11,7 +11,7 @@ error(){
 
 fname=$1
 
-files=`ls | grep reshape_mecab_utf8_.*.txt`
+files=`ls | grep ^reshape_mecab_utf8_.*.txt`
 cat $files > files_all_${fname}.txt
 mv files_all_${fname}.txt ./files
 exit 0
