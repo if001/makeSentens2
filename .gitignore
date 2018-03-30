@@ -1,0 +1,13 @@
+Script.cpython-35m-darwin.so 
+__pycache__ 
+aozora_text/*.txt 
+aozora_text/files/* 
+aozora_text/zip/* 
+aozora_text/__pycache__ 
+models/weight* 
+models/__pycache__ 
+lib/__pycache__ 
+lib/*.model 
+tflog/ 
+.DS_Store 
+!.gitkeep 
